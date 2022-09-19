@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>navigation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <nav id="main-menu">
+      <ul class="nav-bar">
+        <li class="nav-button-home"><a href="#">Home</a></li>
+        <li class="nav-button-services"><a href="#">Services</a></li>
+        <li class="nav-button-products"><a href="#">Products</a></li>
+      </ul>
+    </nav>
+
+    <h1>Incredibly Basic Slider</h1>
+    <div id="slider">
+      <a href="#" class="control_next">>></a>
+      <a href="#" class="control_prev"><</a>
+      <ul>
+        <li>SLIDE 1</li>
+        <li style="background: #aaa">SLIDE 2</li>
+        <li>SLIDE 3</li>
+        <li style="background: #aaa">SLIDE 4</li>
+      </ul>
+    </div>
+
+    <div class="slider_option">
+      <input type="checkbox" id="checkbox" />
+      <label for="checkbox">Autoplay Slider</label>
+    </div>
+
+   
+    <script>
+      jQuery(document).ready(function ($) {
+        $("#checkbox").change(function () {
+          setInterval(function () {
+            moveRight();
+          }, 3000);
+        });
+
+        var slideCount = $("#slider ul li").length;
+        var slideWidth = $("#slider ul li").width();
+        var slideHeight = $("#slider ul li").height();
+        var sliderUlWidth = slideCount * slideWidth;
+
+        $("#slider").css({ width: slideWidth, height: slideHeight });
+
+        $("#slider ul").css({ width: sliderUlWidth, marginLeft: -slideWidth });
+
+        $("#slider ul li:last-child").prependTo("#slider ul");
+
+        function moveLeft() {
+          $("#slider ul").animate(
+            {
+              left: +slideWidth,
+            },
+            200,
+            function () {
+              $("#slider ul li:last-child").prependTo("#slider ul");
+              $("#slider ul").css("left", "");
+            }
+          );
+        }
+
+        function moveRight() {
+          $("#slider ul").animate(
+            {
+              left: -slideWidth,
+            },
+            200,
+            function () {
+              $("#slider ul li:first-child").appendTo("#slider ul");
+              $("#slider ul").css("left", "");
+            }
+          );
+        }
+
+        $("a.control_prev").click(function () {
+          moveLeft();
+        });
+
+        $("a.control_next").click(function () {
+          moveRight();
+        });
+      });
+    </script>
+  </body>
+  <!-- Site footer -->
+  <footer class="site-footer">
+    <div class="container-footer">
+      <div class="row">
+        <div class="col-sm-12 col-md-6">
+          <h6>About</h6>
+          <p class="text-justify">
+            Scanfcode.com <i>CODE WANTS TO BE SIMPLE </i> is an initiative to
+            help the upcoming programmers with the code. Scanfcode focuses on
+            providing the most efficient code or snippets as the code wants to
+            be simple. We will help programmers build up concepts in different
+            programming languages that include C, C++, Java, HTML, CSS,
+            Bootstrap, JavaScript, PHP, Android, SQL and Algorithm.
+          </p>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Categories</h6>
+          <ul class="footer-links">
+            <li><a href="http://scanfcode.com/category/c-language/">C</a></li>
+            <li>
+              <a href="http://scanfcode.com/category/front-end-development/"
+                >UI Design</a
+              >
+            </li>
+            <li>
+              <a href="http://scanfcode.com/category/back-end-development/"
+                >PHP</a
+              >
+            </li>
+            <li>
+              <a href="http://scanfcode.com/category/java-programming-language/"
+                >Java</a
+              >
+            </li>
+            <li>
+              <a href="http://scanfcode.com/category/android/">Android</a>
+            </li>
+            <li>
+              <a href="http://scanfcode.com/category/templates/">Templates</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-xs-6 col-md-3">
+          <h6>Quick Links</h6>
+          <ul class="footer-links">
+            <li><a href="http://scanfcode.com/about/">About Us</a></li>
+            <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
+            <li>
+              <a href="http://scanfcode.com/contribute-at-scanfcode/"
+                >Contribute</a
+              >
+            </li>
+            <li>
+              <a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a>
+            </li>
+            <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr />
+    </div>
+    <div class="container2">
+      <div class="row">
+        <div class="col-md-8 col-sm-6 col-xs-12">
+          <p class="copyright-text">
+            Copyright &copy; 2017 All Rights Reserved by
+            <a href="#">Scanfcode</a>.
+          </p>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <ul class="social-icons">
+            <li>
+              <a class="facebook" href="#"><i class="fa fa-facebook"></i></a>
+            </li>
+            <li>
+              <a class="twitter" href="#"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li>
+              <a class="dribbble" href="#"><i class="fa fa-dribbble"></i></a>
+            </li>
+            <li>
+              <a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+</html>
