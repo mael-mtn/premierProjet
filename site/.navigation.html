@@ -17,75 +17,73 @@
     </nav>
 
     <h1>Incredibly Basic Slider</h1>
-    <div id="slider">
-      <a href="#" class="control_next">>></a>
-      <a href="#" class="control_prev"><</a>
-      <ul>
-        <li>SLIDE 1</li>
-        <li style="background: #aaa">SLIDE 2</li>
-        <li>SLIDE 3</li>
-        <li style="background: #aaa">SLIDE 4</li>
-      </ul>
+    <div class="carousel">
+        <img id="img1" src="https://images.unsplash.com/photo-1495467033336-2effd8753d51?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" alt="">
+        <img id="img2" src="https://images.unsplash.com/photo-1522735338363-cc7313be0ae0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2689&q=80" alt="">
+        <img id="img3" src="https://images.unsplash.com/photo-1559087867-ce4c91325525?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80" alt="">
+      </div>
+      <button id="prev"><i class="fas fa-chevron-left"></i></button>
+      <button id="next"><i class="fas fa-chevron-right"></i></button>
     </div>
 
-    <div class="slider_option">
-      <input type="checkbox" id="checkbox" />
-      <label for="checkbox">Autoplay Slider</label>
-    </div>
+        <ul>
+            <li>article 1</li>
+            <li>article 2</li>
+            <li>article 3</li>
+            <li>article 4</li>
+            <li>article 5</li>
+        </ul>
 
-   
-    <script>
-      jQuery(document).ready(function ($) {
-        $("#checkbox").change(function () {
-          setInterval(function () {
-            moveRight();
-          }, 3000);
-        });
+        <script>
+      const prevBtn = document.getElementById("prev");
+      const nextBtn = document.getElementById("next");
+      const carousel = document.querySelector(".container .carousel");
 
-        var slideCount = $("#slider ul li").length;
-        var slideWidth = $("#slider ul li").width();
-        var slideHeight = $("#slider ul li").height();
-        var sliderUlWidth = slideCount * slideWidth;
+      let size = 1;
+      let index = 0;
 
-        $("#slider").css({ width: slideWidth, height: slideHeight });
-
-        $("#slider ul").css({ width: sliderUlWidth, marginLeft: -slideWidth });
-
-        $("#slider ul li:last-child").prependTo("#slider ul");
-
-        function moveLeft() {
-          $("#slider ul").animate(
-            {
-              left: +slideWidth,
-            },
-            200,
-            function () {
-              $("#slider ul li:last-child").prependTo("#slider ul");
-              $("#slider ul").css("left", "");
-            }
-          );
+      nextBtn.addEventListener("click", () => {
+        if (index === 2) {
+          carousel.style.transform = "translateX(" + 0 + "px)";
+          carousel.style.transition = "none";
+          index = 0;
+          size = 1;
+          return;
+        } else if (index === 1) {
+          carousel.style.transform = "translateX(" + -1100 + "px)";
+          carousel.style.transition = ".3s ease";
+          index = 2;
+          size = 2;
+          return;
+        } else {
+          carousel.style.transform = "translateX(" + -550 + "px)";
+          carousel.style.transition = ".3s ease";
+          index = 1;
+          size = 1;
+          return;
         }
+      });
 
-        function moveRight() {
-          $("#slider ul").animate(
-            {
-              left: -slideWidth,
-            },
-            200,
-            function () {
-              $("#slider ul li:first-child").appendTo("#slider ul");
-              $("#slider ul").css("left", "");
-            }
-          );
+      prevBtn.addEventListener("click", () => {
+        if (index === 0) {
+          carousel.style.transform = "translateX(" + -1100 + "px)";
+          carousel.style.transition = "none";
+          index = 2;
+          size = 1;
+          return;
+        } else if (index === 1) {
+          carousel.style.transform = "translateX(" + 0 + "px)";
+          carousel.style.transition = ".3s ease";
+          index = 0;
+          size = 1;
+          return;
+        } else {
+          carousel.style.transform = "translateX(" + -550 + "px)";
+          carousel.style.transition = ".3s ease";
+          index = 1;
+          size = 2;
+          return;
         }
-
-        $("a.control_prev").click(function () {
-          moveLeft();
-        });
-
-        $("a.control_next").click(function () {
-          moveRight();
-        });
       });
     </script>
   </body>
