@@ -1,18 +1,14 @@
 <h1 align="center">Mon Premier ReadMe </h1>
 <br/>
 
-> Vous trouverez ici tous ce qu'il faut savoir sur mon projet
+> Tun trouvera ici toutes les commendes vu pour Git
 
 ---
-
-[![DOCS](https://img.shields.io/badge/Documentation-see%20docs-green?style=flat-square&logo=appveyor)](INSERT_LINK_FOR_DOCS_HERE)
-[![UI ](https://img.shields.io/badge/User%20Interface-Link%20to%20UI-orange?style=flat-square&logo=appveyor)](INSERT_UI_LINK_HERE)
-[![GitHub Super-Linter](https://github.com/<OWNER>/<REPOSITORY>/workflows/Lint%20Code%20Base/badge.svg)](https://github.com/marketplace/actions/super-linter)
 
 ## Features
 
 <p align="center">
-    Mettre du texte ici
+    -commandes git 
 </p>
 <br>
 
@@ -20,6 +16,16 @@
 
 <p align="center">
 <img src="https://media.sproutsocial.com/uploads/2017/02/10x-featured-social-media-image-size.png" alt="une image" width="400px"/>
+</p>
+
+## Commandes
+
+<p align="center">
+    - cd : aller dans le dossier 
+    - mkdir : créer codeun fichier 
+    - git config --global : configuratio global 
+    - git push : envoyer
+    - git add : ajouter 
 </p>
 
 ## Instructions
